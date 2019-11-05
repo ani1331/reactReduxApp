@@ -24,14 +24,14 @@ export const getUsersAsync = () => {
     };
 };
 
-export const getUserPostsAsync = (id) => {
+export const getUserPostsAsync = (userId) => {
     return(dispatch) => {
-        return axios.get(`${postsApiUrl}${id}`)
+        return axios.get(`${postsApiUrl}${userId}`)
             .then(response => response.data)
             .then(posts => {
                 dispatch({
                     type: RECEIVE_POST_LIST,
-                    // payload: id,
+                    payload: userId,
                     posts
                 });
             })

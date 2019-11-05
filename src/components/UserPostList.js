@@ -5,7 +5,8 @@ import {connect} from "react-redux";
 
 class PostList extends Component {
     componentDidMount() {
-        this.props.getUserPosts(this.props.match.params.id);
+        console.log(this.props.userId);
+        this.props.getUserPosts();
     }
 
     render() {
@@ -39,10 +40,10 @@ class PostList extends Component {
     }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
     return {
-        posts: state.posts
-        // post: state.posts.find(user => user.id === +props.match.params.id )
+        posts: state.posts,
+        userId: state.router.location.pathname.replace('/posts/','')
     }
 };
 
