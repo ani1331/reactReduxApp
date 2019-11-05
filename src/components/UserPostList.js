@@ -4,27 +4,9 @@ import {getUserPostsAsync} from "../actions";
 import {connect} from "react-redux";
 
 class PostList extends Component {
-    // constructor(props){
-    //     super(props);
-    //     this.state = {
-    //         posts: [],
-    //     };
-    //     this.userId = props.match.params.userId;
-    // }
-
     componentDidMount() {
-        this.props.getUserPosts();
+        this.props.getUserPosts(this.props.match.params.id);
     }
-
-    // getPostList = () => {
-    //     fetch(`https://jsonplaceholder.typicode.com/posts?userId=${this.userId}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             this.setState({
-    //                 posts: data,
-    //             })
-    //         });
-    // };
 
     render() {
         return (
@@ -57,9 +39,10 @@ class PostList extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
     return {
         posts: state.posts
+        // post: state.posts.find(user => user.id === +props.match.params.id )
     }
 };
 

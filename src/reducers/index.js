@@ -1,4 +1,4 @@
-import { RECEIVE_COMMENT_LIST} from '../actions';
+// import { RECEIVE_COMMENT_LIST} from '../actions';
 import { combineReducers } from 'redux';
 import usersReducer from "./UsersReducer";
 import postsReducer from "./PostsReducer";
