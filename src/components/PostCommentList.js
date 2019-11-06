@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 
 class CommentList extends Component {
     componentDidMount() {
-        this.props.getCommentList(this.props.postId);
+        this.props.getCommentList(this.props.match.params.postId);
     }
 
     render() {
@@ -41,7 +41,6 @@ class CommentList extends Component {
 const mapStateToProps = (state) => {
     return {
         comments: state.comments,
-        postId: state.router.location.pathname.replace('/comments/','')
     }
 };
 

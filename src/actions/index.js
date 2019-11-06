@@ -4,7 +4,7 @@ export const RECEIVE_USERS_LIST = 'RECEIVE_USERS_LIST';
 export const RECEIVE_POST_LIST = 'RECEIVE_POST_LIST';
 export const RECEIVE_COMMENT_LIST= 'RECEIVE_COMMENT_LIST';
 
-const usersApiUrl = 'https://jsonplaceholder.typicode.com/users';
+const usersApiUrl = 'http://localhost:3000/users.json';
 const postsApiUrl = "https://jsonplaceholder.typicode.com/posts?userId=";
 const commentsApiUrl = 'https://jsonplaceholder.typicode.com/comments?postId=';
 

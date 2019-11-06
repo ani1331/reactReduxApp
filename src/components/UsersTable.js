@@ -16,7 +16,7 @@ class UsersTable extends Component {
                 <div className="App">
                     <table className="table table-striped"
                            style={{
-                               width: "80%",
+                               width: "auto",
                                borderRadius: "1em",
                                overflow: "hidden",
                                margin: "2% auto",
@@ -36,7 +36,7 @@ class UsersTable extends Component {
                                     <Link to={`/posts/${user.id}`}>{user.name}</Link>
                                 </td>
                                 <td>{user.email}</td>
-                                <td>{user.address.city}, {user.address.street}</td>
+                                <td>{user.address}</td>
                             </tr>
                         ))}
                         </tbody>
