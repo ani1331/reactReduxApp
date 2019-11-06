@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 class PostList extends Component {
     componentDidMount() {
         console.log(this.props.userId);
-        this.props.getUserPosts();
+        this.props.getUserPosts(this.props.userId);
     }
 
     render() {
@@ -49,7 +49,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getUserPosts: () => dispatch(getUserPostsAsync())
+        getUserPosts: (userId) => dispatch(getUserPostsAsync(userId))
     }
 };
 

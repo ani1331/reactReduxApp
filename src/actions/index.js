@@ -6,7 +6,7 @@ export const RECEIVE_COMMENT_LIST= 'RECEIVE_COMMENT_LIST';
 
 const usersApiUrl = 'https://jsonplaceholder.typicode.com/users';
 const postsApiUrl = "https://jsonplaceholder.typicode.com/posts?userId=";
-// const commentsApiUrl = '';
+const commentsApiUrl = 'https://jsonplaceholder.typicode.com/comments?postId=';
 
 export const getUsersAsync = () => {
     return (dispatch) => {
@@ -31,8 +31,23 @@ export const getUserPostsAsync = (userId) => {
             .then(posts => {
                 dispatch({
                     type: RECEIVE_POST_LIST,
-                    payload: userId,
                     posts
+                });
+            })
+            .catch(error => {
+                throw(error);
+            });
+    }
+};
+
+export const getPostCommentsAsync = (postId) => {
+    return(dispatch) => {
+        return axios.get(`${commentsApiUrl}${postId}`)
+            .then(response => response.data)
+            .then(comments => {
+                dispatch({
+                    type: RECEIVE_COMMENT_LIST,
+                    comments
                 });
             })
             .catch(error => {

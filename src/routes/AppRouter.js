@@ -1,11 +1,9 @@
 import React from "react";
-import {createBrowserHistory} from 'history';
 import UsersTable from "../components/UsersTable";
 import PostList from "../components/UserPostList";
 import CommentList from "../components/PostCommentList";
 import {Router, Switch, Route} from "react-router-dom";
-
-const history = createBrowserHistory();
+import { history } from '../store/configureStore'
 
 const AppRouter = () => (
     <Router history={history}>

@@ -1,27 +1,11 @@
 import React, {Component} from 'react';
+import {getPostCommentsAsync} from "../actions";
+import {connect} from "react-redux";
 
 class CommentList extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            comments: [],
-        };
-        this.postId = props.match.params.postId;
-    }
-
     componentDidMount() {
-        this.getCommentList();
+        this.props.getCommentList(this.props.postId);
     }
-
-    getCommentList = () => {
-        fetch(`https://jsonplaceholder.typicode.com/comments?postId=${this.postId}`)
-            .then(res => res.json())
-            .then(data => {
-                this.setState({
-                    comments: data,
-                })
-            });
-    };
 
     render() {
         return (
@@ -40,7 +24,7 @@ class CommentList extends Component {
                     </tr>
                     </thead>
                     <tbody>
-                    {this.state.comments.map(comment => (
+                    {this.props.comments.map(comment => (
                         <tr key={comment.id}>
                             <td>{comment.name}</td>
                             <td>{comment.email}</td>
@@ -54,4 +38,17 @@ class CommentList extends Component {
     }
 }
 
-export default CommentList;
+const mapStateToProps = (state) => {
+    return {
+        comments: state.comments,
+        postId: state.router.location.pathname.replace('/comments/','')
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getCommentList: (postId) => dispatch(getPostCommentsAsync(postId))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentList);
