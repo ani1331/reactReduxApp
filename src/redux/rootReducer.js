@@ -1,8 +1,7 @@
-// import { RECEIVE_COMMENT_LIST} from '../actions';
 import { combineReducers } from 'redux';
-import usersReducer from "./UsersReducer";
-import postsReducer from "./PostsReducer";
-import commentsReducer from "./CommentsReducer";
+import usersReducer from "./ducks/users/reducers";
+import postsReducer from "./ducks/posts/reducers";
+import commentsReducer from "./ducks/comments/reducers";
 import { connectRouter } from 'connected-react-router'
 
 
@@ -15,4 +14,3 @@ const createRootReducer = (history) => combineReducers({
 
 
 export default createRootReducer
-

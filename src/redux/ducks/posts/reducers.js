@@ -1,4 +1,4 @@
-import {RECEIVE_POST_LIST} from "../actions";
+import {RECEIVE_POST_LIST} from "./types"
 
 const postsReducer = (state = [], action) => {
     switch (action.type) {

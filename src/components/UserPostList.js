@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {getUserPostsAsync} from "../actions";
+import {postsOperations} from "../redux/ducks/posts";
 import {connect} from "react-redux";
 
 class PostList extends Component {
@@ -47,7 +47,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getUserPosts: (userId) => dispatch(getUserPostsAsync(userId))
+        getUserPosts: (userId) => dispatch(postsOperations.getUserPostsAsync(userId))
     }
 };
 

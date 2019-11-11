@@ -1,4 +1,4 @@
-import {RECEIVE_USERS_LIST} from "../actions";
+import {RECEIVE_USERS_LIST} from "./types"
 
 const usersReducer = (state = [], action) => {
     switch (action.type) {

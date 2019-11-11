@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {getPostCommentsAsync} from "../actions";
+import {commentsOperations} from "../redux/ducks/comments";
 import {connect} from "react-redux";
 
 class CommentList extends Component {
@@ -46,7 +46,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getCommentList: (postId) => dispatch(getPostCommentsAsync(postId))
+        getCommentList: (postId) => dispatch(commentsOperations.getPostCommentsAsync(postId))
     }
 };
 
