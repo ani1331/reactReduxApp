@@ -3,7 +3,7 @@ import UsersTable from "../components/UsersTable";
 import PostList from "../components/UserPostList";
 import CommentList from "../components/PostCommentList";
 import {Router, Switch, Route} from "react-router-dom";
-import { history } from '../store/configureStore'
+import { history } from '../redux/configureStore'
 
 const AppRouter = () => (
     <Router history={history}>

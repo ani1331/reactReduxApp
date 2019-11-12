@@ -1,4 +1,4 @@
-import receivePosts from "./types"
+import receivePosts from "./actions"
 import axios from "axios";
 
 const getUserPostsAsync = (userId) => {

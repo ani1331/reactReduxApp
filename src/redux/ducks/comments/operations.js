@@ -1,4 +1,4 @@
-import receiveComments from "./types"
+import receiveComments from "./actions"
 import axios from "axios";
 
 export const getPostCommentsAsync = (postId) => {

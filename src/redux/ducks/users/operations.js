@@ -1,4 +1,4 @@
-import receiveUsers from "./types"
+import receiveUsers from "./actions"
 import axios from "axios";
 
 export const getUsersAsync = () => {

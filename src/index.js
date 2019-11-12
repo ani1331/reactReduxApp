@@ -4,7 +4,7 @@ import AppRouter from './routes/AppRouter';
 import {Provider} from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import {ConnectedRouter} from 'connected-react-router'
-import configureStore, { history } from './store/configureStore'
+import configureStore, { history } from './redux/configureStore'
 
 const store = configureStore();
 
