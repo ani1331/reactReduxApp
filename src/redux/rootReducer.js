@@ -12,5 +12,4 @@ const createRootReducer = (history) => combineReducers({
     comments: commentsReducer
 });
 
-
 export default createRootReducer

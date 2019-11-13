@@ -1,15 +1,18 @@
 import {createSelector} from 'reselect'
 import { combineSelectors } from 'combine-selectors-redux'
 
-const getUsersFromState = (state) => state.users;
+const getRowsFromState = (state) => state.users.rows;
 
-const getUsersSelector = createSelector(
-    getUsersFromState,
-    users => users
+const getRowsSelector = createSelector(
+    getRowsFromState,
+    users => users,
 );
 
+
+
+
 const getFriendsSelector = createSelector(
-    getUsersFromState,
+    getRowsFromState,
     users => {
         const hashMap = {};
         users.map(
@@ -22,6 +25,6 @@ const getFriendsSelector = createSelector(
 );
 
 export const selectors = combineSelectors({
-    getUsersSelector,
+    getRowsSelector,
     getFriendsSelector
 });

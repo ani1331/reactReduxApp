@@ -1,18 +1,18 @@
-import receiveUsers from "./actions"
+// import receiveUsers from "./actions"
 import axios from "axios";
+import * as types from './types'
 
-export const getUsersAsync = () => {
+export const getUsersAsync = () => dispatch => {
     const usersApiUrl = 'http://localhost:3000/users.json';
-    return (dispatch) => {
+    dispatch({type: types.REQUESTING_USERS_LIST});
         return axios.get(usersApiUrl)
             .then(response => response.data)
-            .then(users => {
-                dispatch((receiveUsers(users)))
-            })
+            .then(users =>
+                dispatch({ type: types.RECEIVE_USERS_LIST, users})
+            )
             .catch(error => {
-                throw(error);
+                dispatch({ type: types.REQUEST_FAILED})
             });
-    };
 };
 
 export default {
