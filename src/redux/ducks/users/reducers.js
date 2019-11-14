@@ -1,7 +1,7 @@
 import * as types from "./types"
 
 const initialState = {
-    status: 'initial',
+    fetching: true,
     rows: []
 };
 
@@ -9,17 +9,17 @@ const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.REQUESTING_USERS_LIST:
             return {
-                status: "requesting",
+                fetching: true,
                 rows: []
             };
-        case types.REQUEST_FAILED:
-            return {
-                status: 'failed',
-                rows: []
-            };
+        // case types.REQUEST_FAILED:
+        //     return {
+        //         status: 'failed',
+        //         rows: []
+        //     };
         case types.RECEIVE_USERS_LIST:
             return {
-                status: 'success',
+                fetching: false,
                 rows: [...action.users]
             };
         default:

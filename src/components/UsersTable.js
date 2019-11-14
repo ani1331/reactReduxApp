@@ -4,22 +4,32 @@ import Icon from '../icon/filter.svg';
 import {usersOperations} from "../redux/ducks/users";
 import {connect} from 'react-redux';
 import '../style/main.css';
+import styles from '../style/indicator.module.css';
 import {selectors} from "../redux/ducks/users";
+
+
+class Indicator extends Component {
+    render() {
+        return (
+        <div className={styles["lds-css"]}>
+            <div className={styles['lds-double-ring']}>
+                <div></div><div></div><div><div></div></div><div><div></div></div>
+            </div>
+        </div>
+        )
+    }
+}
 
 class UsersTable extends Component {
     componentDidMount() {
         this.props.getUsers();
-        // console.log(this.props)
     }
 
     render() {
-        if (this.props.users.status === 'requesting') {
-            return (<div>loading...</div>);
-        } else if (this.props.users.status === 'failed') {
-            return <div>error</div>
+        console.log(this.props.isFetching);
+        if (this.props.isFetching) {
+            return ( <Indicator/> );
         } else {
-            // console.log(this.props.users);
-
             return (
                 <div className="App">
                     <table className="table table-striped"
@@ -46,7 +56,7 @@ class UsersTable extends Component {
                                 </td>
                                 <td>{user.email}</td>
                                 <td>{user.address}</td>
-                                <td>{this.props.friends[user.id]}</td>
+                                <td>{this.props.friends[user.id].join(', ')}</td>
                             </tr>
                         ))}
                         </tbody>
@@ -62,6 +72,7 @@ const mapStateToProps = (state) => {
     return {
         users: selectors.getRowsSelector(state),
         friends: selectors.getFriendsSelector(state),
+        isFetching: selectors.getIsFetchingSelector(state)
     }
 };
 

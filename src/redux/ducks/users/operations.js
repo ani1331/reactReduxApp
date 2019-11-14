@@ -11,7 +11,7 @@ export const getUsersAsync = () => dispatch => {
                 dispatch({ type: types.RECEIVE_USERS_LIST, users})
             )
             .catch(error => {
-                dispatch({ type: types.REQUEST_FAILED})
+                dispatch({ type: types.REQUEST_FAILED, error})
             });
 };
 
