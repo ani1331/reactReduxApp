@@ -26,7 +26,6 @@ class UsersTable extends Component {
     }
 
     render() {
-        console.log(this.props.isFetching);
         if (this.props.isFetching) {
             return ( <Indicator/> );
         } else {

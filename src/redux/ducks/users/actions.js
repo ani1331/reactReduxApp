@@ -1,8 +1,7 @@
 import * as types from './types';
 
-export default function receiveUsers(users) {
+export function receiveUsers() {
     return {
         type: types.RECEIVE_USERS_LIST,
-        users
     }
 }

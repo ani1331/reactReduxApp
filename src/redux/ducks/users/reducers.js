@@ -12,11 +12,6 @@ const usersReducer = (state = initialState, action) => {
                 fetching: true,
                 rows: []
             };
-        // case types.REQUEST_FAILED:
-        //     return {
-        //         status: 'failed',
-        //         rows: []
-        //     };
         case types.RECEIVE_USERS_LIST:
             return {
                 fetching: false,
