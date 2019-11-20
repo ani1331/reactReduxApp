@@ -1,4 +1,3 @@
-// import receiveUsers from "./actions"
 import axios from "axios";
 import * as types from './types'
 

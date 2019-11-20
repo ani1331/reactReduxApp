@@ -67,6 +67,7 @@ class UsersTable extends Component {
 }
 
 
+
 const mapStateToProps = (state) => {
     return {
         users: selectors.getRowsSelector(state),

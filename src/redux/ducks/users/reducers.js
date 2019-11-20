@@ -15,7 +15,7 @@ const usersReducer = (state = initialState, action) => {
         case types.RECEIVE_USERS_LIST:
             return {
                 fetching: false,
-                rows: [...action.users]
+                rows: action.users
             };
         default:
             return state;

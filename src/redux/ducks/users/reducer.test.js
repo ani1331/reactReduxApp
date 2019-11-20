@@ -1,8 +1,14 @@
 import usersReducer from './reducers';
 import * as types from './types';
-import getUsersAsync from './operations'
 
 describe('users reducer', () => {
+    it('should return the initial state', () => {
+        expect(usersReducer(undefined, {})).toEqual({
+            'fetching': true,
+            'rows': []
+        })
+    });
+
     it('should handle REQUESTING_USERS_LIST', () => {
         const requestingUsers = {
             type: types.REQUESTING_USERS_LIST
@@ -13,10 +19,12 @@ describe('users reducer', () => {
         });
     });
 
-    // it('should handle RECEIVE_USERS_LIST', () => {
-    //     const action = {type: types.RECEIVE_USERS_LIST};
-    //     const initialState = {fetching: false,
-    //         rows: [...action.users] }
-    //     expect(usersReducer(undefined, action)).toEqual(initialState);
-    // });
+    it('should handle RECEIVE_USERS_LIST', () => {
+        const action = {type: types.RECEIVE_USERS_LIST};
+        const initialState = {
+            fetching: false,
+            rows: action.users
+        };
+        expect(usersReducer(undefined, action)).toEqual(initialState);
+    });
 });
