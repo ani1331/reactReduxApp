@@ -13,7 +13,10 @@ describe('users reducer', () => {
         const requestingUsers = {
             type: types.REQUESTING_USERS_LIST
         };
-        expect(usersReducer({}, requestingUsers)).toEqual({
+        expect(usersReducer({
+            fetching: false,
+            rows: [1, 2]
+        }, requestingUsers)).toEqual({
             'fetching': true,
             "rows": []
         });
@@ -21,10 +24,10 @@ describe('users reducer', () => {
 
     it('should handle RECEIVE_USERS_LIST', () => {
         const action = {type: types.RECEIVE_USERS_LIST};
-        const initialState = {
+        const receivedState = {
             fetching: false,
             rows: action.users
         };
-        expect(usersReducer(undefined, action)).toEqual(initialState);
+        expect(usersReducer(undefined, action)).toEqual(receivedState);
     });
 });
