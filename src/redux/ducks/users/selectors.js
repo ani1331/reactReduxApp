@@ -30,7 +30,7 @@ const getIsFetchingSelector = createSelector(
 export const k = {
     getRowsFromState,
     getIsFetching,
-}
+};
 
 export const selectors = combineSelectors({
     getRowsSelector,
