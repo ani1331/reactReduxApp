@@ -11,7 +11,7 @@ describe('users reducer', () => {
 
     it('should handle REQUESTING_USERS_LIST', () => {
         const requestingUsers = {
-            type: types.REQUESTING_USERS_LIST
+            type: types.REQUEST_USERS
         };
         expect(usersReducer({
             fetching: false,
@@ -23,7 +23,7 @@ describe('users reducer', () => {
     });
 
     it('should handle RECEIVE_USERS_LIST', () => {
-        const action = {type: types.RECEIVE_USERS_LIST};
+        const action = {type: types.RESPONSE_USERS_SUCCESS};
         const receivedState = {
             fetching: false,
             rows: action.users

@@ -7,12 +7,12 @@ const initialState = {
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.REQUESTING_USERS_LIST:
+        case types.REQUEST_USERS:
             return {
                 fetching: true,
                 rows: []
             };
-        case types.RECEIVE_USERS_LIST:
+        case types.RESPONSE_USERS_SUCCESS:
             return {
                 fetching: false,
                 rows: action.users

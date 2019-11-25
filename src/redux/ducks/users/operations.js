@@ -3,14 +3,14 @@ import * as types from './types'
 
 export const getUsersAsync = () => dispatch => {
     const usersApiUrl = 'http://localhost:3000/users.json';
-    dispatch({type: types.REQUESTING_USERS_LIST});
+    dispatch({type: types.REQUEST_USERS});
         return axios.get(usersApiUrl)
             .then(response => response.data)
             .then(users =>
-                dispatch({ type: types.RECEIVE_USERS_LIST, users})
+                dispatch({ type: types.RESPONSE_USERS_SUCCESS, users})
             )
             .catch(error => {
-                dispatch({ type: types.REQUEST_FAILED, error})
+                dispatch({ type: types.RESPONSE_USERS_FAILURE, error})
             });
 };
 

@@ -1,3 +1,3 @@
-export const RECEIVE_USERS_LIST = 'ducks/users/RECEIVE_USERS_LIST';
-export const REQUESTING_USERS_LIST = 'ducks/users/LOADING_USERS_LIST';
-export const REQUEST_FAILED = 'ducks/users/LOADING_FAILED';
+export const RESPONSE_USERS_SUCCESS = 'ducks/users/RESPONSE_USERS_SUCCESS';
+export const REQUEST_USERS = 'ducks/users/REQUEST_USERS';
+export const RESPONSE_USERS_FAILURE = 'ducks/users/RESPONSE_USERS_FAILURE';

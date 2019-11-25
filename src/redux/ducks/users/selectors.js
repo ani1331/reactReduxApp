@@ -2,6 +2,7 @@ import {createSelector} from 'reselect'
 import { combineSelectors } from 'combine-selectors-redux'
 
 const getRowsFromState = (state) => state.users.rows;
+
 const getIsFetching = (state) => state.users.fetching;
 
 const getRowsSelector = createSelector(

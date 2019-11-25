@@ -20,7 +20,7 @@ describe('users async function', () => {
             data: []
         });
         getUsersAsync()(dispatchFn);
-        expect(dispatchFn).toHaveBeenCalledWith({type:types.REQUESTING_USERS_LIST})
+        expect(dispatchFn).toHaveBeenCalledWith({type:types.REQUEST_USERS})
     });
 
     it('should handle RECEIVE_USERS_LIST', async () => {
@@ -31,7 +31,7 @@ describe('users async function', () => {
         await getUsersAsync()(dispatchFn);
 
         expect(dispatchFn).toHaveBeenLastCalledWith(
-            {type: types.RECEIVE_USERS_LIST, users: mockData}
+            {type: types.RESPONSE_USERS_SUCCESS, users: mockData}
         )
     })
 });
