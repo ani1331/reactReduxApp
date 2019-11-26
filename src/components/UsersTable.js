@@ -4,23 +4,10 @@ import Icon from '../icon/filter.svg';
 import {usersOperations} from "../redux/ducks/users";
 import {connect} from 'react-redux';
 import '../style/main.css';
-import styles from '../style/indicator.module.css';
 import {selectors} from "../redux/ducks/users";
+import Indicator  from './LoadingIndicator'
 
-
-class Indicator extends Component {
-    render() {
-        return (
-        <div className={styles["lds-css"]}>
-            <div className={styles['lds-double-ring']}>
-                <div></div><div></div><div><div></div></div><div><div></div></div>
-            </div>
-        </div>
-        )
-    }
-}
-
-class UsersTable extends Component {
+export class UsersTable extends Component {
     componentDidMount() {
         this.props.getUsers();
     }
@@ -28,7 +15,7 @@ class UsersTable extends Component {
     render() {
         if (this.props.isFetching) {
             return ( <Indicator/> );
-        } else {
+        }
             return (
                 <div className="App">
                     <table className="table table-striped"
@@ -48,7 +35,7 @@ class UsersTable extends Component {
                         </thead>
                         <tbody>
                         {this.props.users.map(user => (
-                            <tr key={user.id}>
+                            <tr className="columns" key={user.id}>
                                 <td>
                                     <img className="ml-1" alt="icon" src={Icon}/>
                                     <Link to={`/posts/${user.id}`}>{user.name}</Link>
@@ -62,7 +49,6 @@ class UsersTable extends Component {
                     </table>
                 </div>
             )
-        }
     }
 }
 

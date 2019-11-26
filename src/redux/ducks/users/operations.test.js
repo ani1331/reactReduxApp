@@ -1,7 +1,7 @@
 import * as types from "./types";
 import { getUsersAsync } from './operations'
-
 import axios from "axios";
+
 jest.mock("axios");
 
 describe('users async function', () => {
