@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, configure } from 'enzyme';
+import { shallow, configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { UsersTable } from './UsersTable';
 import Indicator  from './LoadingIndicator';
@@ -9,12 +9,19 @@ configure({ adapter: new Adapter() });
 describe('users table', () => {
     const getUsersFn = jest.fn();
     let wrapper;
+    const users = [{
+        "id": 1,
+        "name": "Valeria Merrill",
+        "email": "valeriamerrill@ohmnet.com",
+        "address": "435 Flatbush Avenue, Calverton, Idaho, 8077"
+    }];
 
     beforeEach(() => {
         wrapper = shallow(<UsersTable
             isFetching={false}
-            users={[]}
+            users={users}
             getUsers={getUsersFn}
+            friends={{1:["Carlson Brooks", "Pugh Garrett", "Hawkins Pace"]}}
         />);
     });
 
@@ -37,19 +44,15 @@ describe('users table', () => {
     });
 
 
-    // it('should render table data', () => {
-    //     wrapper.setProps({
-    //         isFetching: false
-    //     });
-    //     const tds = [1, 2, 3, 4]
-    //     // expect(wrapper.find('.columns')).toBeDefined();
-    //     expect(wrapper.find('td')).toHaveLength(tds.length);
-    // })
+    it('should render table data', () => {
+        wrapper.setProps({
+            isFetching: false
+        });
+        expect(wrapper.props('users')).toBeDefined();
+    });
 
 
-    // it('calls componentDidMount', () => {
-    //     expect(getUsersFn).toHaveBeenCalled()
-    // });
-
-
+    it('calls componentDidMount', () => {
+        expect(getUsersFn).toHaveBeenCalled();
+    });
 });
