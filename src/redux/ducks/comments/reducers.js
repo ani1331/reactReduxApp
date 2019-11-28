@@ -1,9 +1,22 @@
-import {RECEIVE_COMMENT_LIST} from "./types";
+import * as types from "./types";
 
-const commentsReducer = (state = [], action) => {
+const initialState = {
+    fetching: true,
+    rows: []
+};
+
+const commentsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case RECEIVE_COMMENT_LIST:
-            return [...action.comments];
+        case types.REQUEST_COMMENTS:
+            return {
+                fetching: true,
+                rows: []
+            };
+        case types.RESPONSE_COMMENTS_SUCCESS:
+            return {
+                fetching: false,
+                rows: action.comments
+            };
         default:
             return state;
     }

@@ -1,17 +1,17 @@
-import * as types from "./types"
+import {requestPosts, responsePostsSuccess, responsePostsFailure} from './actions'
 import axios from "axios";
 
 export const getUserPostsAsync = (userId) => (dispatch) => {
     if (userId) {
         const postsApiUrl = 'https://jsonplaceholder.typicode.com/posts?userId=';
-        dispatch({type: types.REQUEST_POSTS});
+        dispatch(requestPosts());
         return axios.get(`${postsApiUrl}${userId}`)
             .then(response => response.data)
             .then(posts => {
-                dispatch({type: types.RESPONSE_POSTS_SUCCESS, posts});
+                dispatch(responsePostsSuccess(posts));
             })
             .catch(error => {
-                dispatch({type: types.RESPONSE_POSTS_FAILURE, error})
+                dispatch(responsePostsFailure(error))
             });
     } else {
         console.log('userId is not received')

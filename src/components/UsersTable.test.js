@@ -29,7 +29,7 @@ describe('users table', () => {
         expect(wrapper.exists()).toBe(true);
     });
 
-    it('should render loading indicator', () => {
+    it('should render loading indicator, when isFetching true', () => {
         wrapper.setProps({
             isFetching: true
         });
@@ -40,15 +40,7 @@ describe('users table', () => {
         wrapper.setProps({
             isFetching: false
         });
-        expect(wrapper.find('div')).toHaveLength(1);
-    });
-
-
-    it('should render table data', () => {
-        wrapper.setProps({
-            isFetching: false
-        });
-        expect(wrapper.props('users')).toBeDefined();
+        expect(wrapper.find('div[data-test-id="users-table"]')).toHaveLength(1);
     });
 
 

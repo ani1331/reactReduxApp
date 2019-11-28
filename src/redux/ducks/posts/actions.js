@@ -1,25 +1,21 @@
 import * as types from "./types";
 
-function requestPosts() {
+export function requestPosts() {
     return {
         type: types.REQUEST_POSTS
     }
 }
 
-function responsePostsSuccess() {
+export function responsePostsSuccess(posts) {
     return {
-        type: types.RESPONSE_POSTS_SUCCESS
+        type: types.RESPONSE_POSTS_SUCCESS,
+        posts
     }
 }
 
-function responsePostsFailure() {
+export function responsePostsFailure(error) {
     return {
-        type: types.RESPONSE_POSTS_FAILURE
+        type: types.RESPONSE_POSTS_FAILURE,
+        error
     }
 }
-
-export const actions = {
-    requestPosts,
-    responsePostsSuccess,
-    responsePostsFailure
-};

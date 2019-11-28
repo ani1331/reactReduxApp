@@ -1,5 +1,7 @@
 import * as types from "./types";
-import { getUsersAsync } from './operations'
+import { getUsersAsync } from './operations';
+import {requestUsers, responseUsersSuccess, responseUsersFailure} from './actions'
+
 import axios from "axios";
 
 jest.mock("axios");

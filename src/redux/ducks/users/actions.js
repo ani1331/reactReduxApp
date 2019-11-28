@@ -1,25 +1,21 @@
 import * as types from './types';
 
-function requestUsers() {
+export function requestUsers() {
     return {
         type: types.REQUEST_USERS,
     }
 }
 
-function responseUsersSuccess() {
+export function responseUsersSuccess(users) {
     return {
         type: types.RESPONSE_USERS_SUCCESS,
+        users
     }
 }
 
-function responseUsersFailure() {
+export function responseUsersFailure(error) {
     return {
         type: types.RESPONSE_USERS_FAILURE,
+        error
     }
 }
-
-export const actions = {
-    requestUsers,
-    responseUsersSuccess,
-    responseUsersFailure
-};

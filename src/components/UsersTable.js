@@ -17,7 +17,7 @@ export class UsersTable extends Component {
             return ( <Indicator/> );
         }
             return (
-                <div className="App">
+                <div data-test-id="users-table" className="App">
                     <table className="table table-striped"
                            style={{
                                width: "auto",

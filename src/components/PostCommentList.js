@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {commentsOperations} from "../redux/ducks/comments";
 import {connect} from "react-redux";
+import Indicator  from './LoadingIndicator';
+import {getCommentsSelector, getIsFetchingSelector} from '../redux/ducks/comments/selectors'
 
 class CommentList extends Component {
     componentDidMount() {
@@ -8,6 +10,9 @@ class CommentList extends Component {
     }
 
     render() {
+        if(this.props.isFetching){
+            return ( <Indicator/> );
+        }
         return (
             <div className="App">
                 <table className="table table-striped" style={{
@@ -40,7 +45,8 @@ class CommentList extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        comments: state.comments,
+        comments: getCommentsSelector(state),
+        isFetching: getIsFetchingSelector(state)
     }
 };
 

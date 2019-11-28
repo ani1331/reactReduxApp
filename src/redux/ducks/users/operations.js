@@ -1,16 +1,16 @@
 import axios from "axios";
-import * as types from './types'
+import {requestUsers, responseUsersSuccess, responseUsersFailure} from './actions'
 
 export const getUsersAsync = () => dispatch => {
     const usersApiUrl = 'http://localhost:3000/users.json';
-    dispatch({type: types.REQUEST_USERS});
+    dispatch(requestUsers());
         return axios.get(usersApiUrl)
             .then(response => response.data)
             .then(users =>
-                dispatch({ type: types.RESPONSE_USERS_SUCCESS, users})
+                dispatch(responseUsersSuccess(users))
             )
             .catch(error => {
-                dispatch({ type: types.RESPONSE_USERS_FAILURE, error})
+                dispatch(responseUsersFailure(error))
             });
 };
 

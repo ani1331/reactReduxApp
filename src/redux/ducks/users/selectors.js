@@ -28,11 +28,6 @@ const getIsFetchingSelector = createSelector(
     fetching => fetching
 );
 
-// export const k = {
-//     getRowsFromState,
-//     getIsFetching,
-// };
-
 export const selectors = combineSelectors({
     getRowsSelector,
     getFriendsSelector,

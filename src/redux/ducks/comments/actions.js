@@ -1,8 +1,27 @@
-import * as types from './types'
+import * as types from "./types";
 
-export default function receiveComments(comments) {
+export function requestComments() {
     return {
-        type: types.RECEIVE_COMMENT_LIST,
+        type: types.REQUEST_COMMENTS
+    }
+}
+
+export function responseCommentsSuccess(comments) {
+    return {
+        type: types.RESPONSE_COMMENTS_SUCCESS,
         comments
     }
 }
+
+export function responseCommentsFailure(error) {
+    return {
+        type: types.RESPONSE_COMMENTS_FAILURE,
+        error
+    }
+}
+
+// export const actions = {
+//     requestComments,
+//     responseCommentsSuccess,
+//     responseCommentsFailure
+// };
